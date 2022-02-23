@@ -102,7 +102,15 @@
     "showBackground": "הצג צבעי רקע",
     "toggleTheme": "שינוי ערכת העיצוב",
     "personalLib": "",
-    "excalidrawLib": ""
+    "excalidrawLib": "",
+    "decreaseFontSize": "",
+    "increaseFontSize": "",
+    "unbindText": "",
+    "link": {
+      "edit": "",
+      "create": "",
+      "label": ""
+    }
   },
   "buttons": {
     "clearReset": "אפס את הלוח",
@@ -184,7 +192,9 @@
     "freedraw": "צייר",
     "text": "טקסט",
     "library": "ספריה",
-    "lock": "השאר את הכלי הנבחר פעיל גם לאחר סיום הציור"
+    "lock": "השאר את הכלי הנבחר פעיל גם לאחר סיום הציור",
+    "penMode": "",
+    "link": ""
   },
   "headings": {
     "canvasActions": "פעולות הלוח",
@@ -204,10 +214,12 @@
     "resizeImage": "",
     "rotate": "ניתן להגביל זוויות על ידי לחיצה על SHIFT תוך כדי סיבוב",
     "lineEditor_info": "לחץ לחיצה כפולה או אנטר לעריכת הנקודות",
-    "lineEditor_pointSelected": "לחץ על Delete להסרת נקודה, CtrlOrCmd+D לשכפל, או גרור להזזה",
-    "lineEditor_nothingSelected": "בחר נקודה להזזה או הסרה, או החזק את כפתור Alt והקלק להוספת נקודות חדשות",
+    "lineEditor_pointSelected": "",
+    "lineEditor_nothingSelected": "",
     "placeImage": "",
-    "publishLibrary": ""
+    "publishLibrary": "",
+    "bindTextToElement": "",
+    "deepBoxSelect": ""
   },
   "canvasError": {
     "cannotShowPreview": "לא הצלחנו להציג את התצוגה המקדימה",
@@ -254,6 +266,8 @@
   "helpDialog": {
     "blog": "קרא את הבלוג שלנו",
     "click": "קליק",
+    "deepSelect": "",
+    "deepBoxSelect": "",
     "curvedArrow": "חץ מעוגל",
     "curvedLine": "קו מעוגל",
     "documentation": "תיעוד",

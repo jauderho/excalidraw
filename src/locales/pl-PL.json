@@ -102,7 +102,15 @@
     "showBackground": "Pokaż próbnik koloru tła",
     "toggleTheme": "Przełącz motyw",
     "personalLib": "Biblioteka prywatna",
-    "excalidrawLib": "Biblioteka Excalidraw"
+    "excalidrawLib": "Biblioteka Excalidraw",
+    "decreaseFontSize": "",
+    "increaseFontSize": "",
+    "unbindText": "",
+    "link": {
+      "edit": "",
+      "create": "",
+      "label": ""
+    }
   },
   "buttons": {
     "clearReset": "Wyczyść dokument i zresetuj kolor dokumentu",
@@ -184,7 +192,9 @@
     "freedraw": "Rysuj",
     "text": "Tekst",
     "library": "Biblioteka",
-    "lock": "Zablokuj wybrane narzędzie"
+    "lock": "Zablokuj wybrane narzędzie",
+    "penMode": "",
+    "link": ""
   },
   "headings": {
     "canvasActions": "Narzędzia",
@@ -204,10 +214,12 @@
     "resizeImage": "Możesz zmienić rozmiar swobodnie trzymając SHIFT,\nprzytrzymaj ALT, aby przeskalować względem środka obiektu",
     "rotate": "Możesz obracać element w równych odstępach trzymając wciśnięty SHIFT",
     "lineEditor_info": "Kliknij dwukrotnie lub naciśnij Enter, aby edytować punkty",
-    "lineEditor_pointSelected": "Naciśnij przycisk Usuń, aby usunąć punkt, Ctrl/Cmd+D, aby zduplikować, lub przeciągnij, aby przenieść",
-    "lineEditor_nothingSelected": "Naciśnij w punkt by go edytować, przytrzymaj Alt i naciśnij by dodać nowy punkt",
+    "lineEditor_pointSelected": "",
+    "lineEditor_nothingSelected": "",
     "placeImage": "Kliknij, aby umieścić obraz, lub kliknij i przeciągnij, aby ustawić jego rozmiar ręcznie",
-    "publishLibrary": "Opublikuj własną bibliotekę"
+    "publishLibrary": "Opublikuj własną bibliotekę",
+    "bindTextToElement": "",
+    "deepBoxSelect": ""
   },
   "canvasError": {
     "cannotShowPreview": "Nie można wyświetlić podglądu",
@@ -254,6 +266,8 @@
   "helpDialog": {
     "blog": "Przeczytaj na naszym blogu",
     "click": "kliknięcie",
+    "deepSelect": "",
+    "deepBoxSelect": "",
     "curvedArrow": "Zakrzywiona strzałka",
     "curvedLine": "Zakrzywiona linia",
     "documentation": "Dokumentacja",

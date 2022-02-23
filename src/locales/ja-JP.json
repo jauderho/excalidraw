@@ -102,7 +102,15 @@
     "showBackground": "背景色ピッカーを表示",
     "toggleTheme": "テーマの切り替え",
     "personalLib": "個人ライブラリ",
-    "excalidrawLib": "Excalidrawライブラリ"
+    "excalidrawLib": "Excalidrawライブラリ",
+    "decreaseFontSize": "フォントサイズを縮小",
+    "increaseFontSize": "フォントサイズを拡大",
+    "unbindText": "",
+    "link": {
+      "edit": "リンクを編集",
+      "create": "リンクを作成",
+      "label": "リンク"
+    }
   },
   "buttons": {
     "clearReset": "キャンバスのリセット",
@@ -184,7 +192,9 @@
     "freedraw": "描画",
     "text": "テキスト",
     "library": "ライブラリ",
-    "lock": "描画後も使用中のツールを選択したままにする"
+    "lock": "描画後も使用中のツールを選択したままにする",
+    "penMode": "ピンチとズームを抑止し、ペンからのみ自由な入力を受け付けます",
+    "link": ""
   },
   "headings": {
     "canvasActions": "キャンバス操作",
@@ -204,10 +214,12 @@
     "resizeImage": "SHIFTを長押しすると自由にサイズを変更できます。\n中央からサイズを変更するにはALTを長押しします",
     "rotate": "回転中にSHIFT キーを押すと角度を制限することができます",
     "lineEditor_info": "ポイントを編集するには、ダブルクリックまたはEnterキーを押します",
-    "lineEditor_pointSelected": "削除ボタンを押して点を削除します。Ctrl+D または Cmd+D で複製します。またはドラッグして移動します",
-    "lineEditor_nothingSelected": "移動または削除する点を選択するか、Altキーを押しながらクリックして新しい点を追加します",
+    "lineEditor_pointSelected": "Deleteキーを押すと点を削除、CtrlOrCmd+Dで複製、マウスドラッグで移動",
+    "lineEditor_nothingSelected": "編集する点を選択（SHIFTを押したままで複数選択）、\nAltキーを押しながらクリックすると新しい点を追加",
     "placeImage": "クリックして画像を配置するか、クリックしてドラッグしてサイズを手動で設定します",
-    "publishLibrary": "自分のライブラリを公開"
+    "publishLibrary": "自分のライブラリを公開",
+    "bindTextToElement": "Enterを押してテキストを追加",
+    "deepBoxSelect": ""
   },
   "canvasError": {
     "cannotShowPreview": "プレビューを表示できません",
@@ -254,6 +266,8 @@
   "helpDialog": {
     "blog": "公式ブログを読む",
     "click": "クリック",
+    "deepSelect": "",
+    "deepBoxSelect": "",
     "curvedArrow": "カーブした矢印",
     "curvedLine": "曲線",
     "documentation": "ドキュメント",
@@ -292,7 +306,7 @@
       "libraryDesc": "ライブラリの使い方を理解するための説明",
       "githubHandle": "GitHubハンドル(任意)。一度レビューのために送信されると、ライブラリを編集できます",
       "twitterHandle": "Twitterのユーザー名 (任意)。Twitterでプロモーションする際にクレジットする人を知っておくためのものです",
-      "website": "個人のウェブサイトまたは他のサイトへのリンク (オプション)"
+      "website": "個人のウェブサイトまたは他のサイトへのリンク (任意)"
     },
     "errors": {
       "required": "必須項目",

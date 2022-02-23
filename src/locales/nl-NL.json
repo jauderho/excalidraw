@@ -102,7 +102,15 @@
     "showBackground": "Toon achtergrondkleur kiezer",
     "toggleTheme": "Thema aan/uit",
     "personalLib": "Persoonlijke bibliotheek",
-    "excalidrawLib": "Excalidraw bibliotheek"
+    "excalidrawLib": "Excalidraw bibliotheek",
+    "decreaseFontSize": "",
+    "increaseFontSize": "",
+    "unbindText": "Ontkoppel tekst",
+    "link": {
+      "edit": "",
+      "create": "",
+      "label": ""
+    }
   },
   "buttons": {
     "clearReset": "Canvas opnieuw instellen",
@@ -184,7 +192,9 @@
     "freedraw": "Tekenen",
     "text": "Tekst",
     "library": "Bibliotheek",
-    "lock": "Geselecteerde tool actief houden na tekenen"
+    "lock": "Geselecteerde tool actief houden na tekenen",
+    "penMode": "Voorkom pinch-zoom en accepteer freedraw invoer alleen van pen",
+    "link": ""
   },
   "headings": {
     "canvasActions": "Canvasacties",
@@ -204,10 +214,12 @@
     "resizeImage": "",
     "rotate": "Je kan hoeken beperken door SHIFT ingedrukt te houden wanneer je draait",
     "lineEditor_info": "Dubbelklik of druk op Enter om punten te bewerken",
-    "lineEditor_pointSelected": "Druk op Delete om een punt te verwijderen, op CtrlOrCmd+D om te kopiëren, of sleeg om te verplaatsen",
-    "lineEditor_nothingSelected": "Selecteer een punt om te verplaatsen of te verwijderen, of houd Alt ingedrukt en klik om nieuwe punten toe te voegen",
+    "lineEditor_pointSelected": "",
+    "lineEditor_nothingSelected": "",
     "placeImage": "",
-    "publishLibrary": "Publiceer je eigen bibliotheek"
+    "publishLibrary": "Publiceer je eigen bibliotheek",
+    "bindTextToElement": "",
+    "deepBoxSelect": ""
   },
   "canvasError": {
     "cannotShowPreview": "Kan voorbeeld niet tonen",
@@ -254,6 +266,8 @@
   "helpDialog": {
     "blog": "Lees onze blog",
     "click": "klik",
+    "deepSelect": "",
+    "deepBoxSelect": "",
     "curvedArrow": "Gebogen pijl",
     "curvedLine": "Kromme lijn",
     "documentation": "Documentatie",

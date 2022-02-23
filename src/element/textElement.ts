@@ -92,70 +92,69 @@ export const bindTextToShapeAfterDuplication = (
 };
 
 export const handleBindTextResize = (
-  elements: readonly NonDeletedExcalidrawElement[],
+  element: NonDeletedExcalidrawElement,
   transformHandleType: MaybeTransformHandleType,
 ) => {
-  elements.forEach((element) => {
-    const boundTextElementId = getBoundTextElementId(element);
-    if (boundTextElementId) {
-      const textElement = Scene.getScene(element)!.getElement(
-        boundTextElementId,
-      ) as ExcalidrawTextElement;
-      if (textElement && textElement.text) {
-        if (!element) {
-          return;
-        }
-        let text = textElement.text;
-        let nextHeight = textElement.height;
-        let containerHeight = element.height;
-        let nextBaseLine = textElement.baseline;
-        if (transformHandleType !== "n" && transformHandleType !== "s") {
-          if (text) {
-            text = wrapText(
-              textElement.originalText,
-              getFontString(textElement),
-              element.width,
-            );
-          }
-
-          const dimensions = measureText(
-            text,
+  const boundTextElementId = getBoundTextElementId(element);
+  if (boundTextElementId) {
+    const textElement = Scene.getScene(element)!.getElement(
+      boundTextElementId,
+    ) as ExcalidrawTextElement;
+    if (textElement && textElement.text) {
+      if (!element) {
+        return;
+      }
+      let text = textElement.text;
+      let nextHeight = textElement.height;
+      let containerHeight = element.height;
+      let nextBaseLine = textElement.baseline;
+      if (transformHandleType !== "n" && transformHandleType !== "s") {
+        if (text) {
+          text = wrapText(
+            textElement.originalText,
             getFontString(textElement),
             element.width,
           );
-          nextHeight = dimensions.height;
-          nextBaseLine = dimensions.baseline;
-        }
-        // increase height in case text element height exceeds
-        if (nextHeight > element.height - BOUND_TEXT_PADDING * 2) {
-          containerHeight = nextHeight + BOUND_TEXT_PADDING * 2;
-          const diff = containerHeight - element.height;
-          // fix the y coord when resizing from ne/nw/n
-          const updatedY =
-            transformHandleType === "ne" ||
-            transformHandleType === "nw" ||
-            transformHandleType === "n"
-              ? element.y - diff
-              : element.y;
-          mutateElement(element, {
-            height: containerHeight,
-            y: updatedY,
-          });
         }
 
-        const updatedY = element.y + containerHeight / 2 - nextHeight / 2;
-        mutateElement(textElement, {
+        const dimensions = measureText(
           text,
-          // preserve padding and set width correctly
-          width: element.width - BOUND_TEXT_PADDING * 2,
-          height: nextHeight,
-          x: element.x + BOUND_TEXT_PADDING,
+          getFontString(textElement),
+          element.width,
+        );
+        nextHeight = dimensions.height;
+        nextBaseLine = dimensions.baseline;
+      }
+      // increase height in case text element height exceeds
+      if (nextHeight > element.height - BOUND_TEXT_PADDING * 2) {
+        containerHeight = nextHeight + BOUND_TEXT_PADDING * 2;
+        const diff = containerHeight - element.height;
+        // fix the y coord when resizing from ne/nw/n
+        const updatedY =
+          transformHandleType === "ne" ||
+          transformHandleType === "nw" ||
+          transformHandleType === "n"
+            ? element.y - diff
+            : element.y;
+        mutateElement(element, {
+          height: containerHeight,
           y: updatedY,
-          baseline: nextBaseLine,
         });
       }
+
+      const updatedY = element.y + containerHeight / 2 - nextHeight / 2;
+
+      mutateElement(textElement, {
+        text,
+        // preserve padding and set width correctly
+        width: element.width - BOUND_TEXT_PADDING * 2,
+        height: nextHeight,
+        x: element.x + BOUND_TEXT_PADDING,
+        y: updatedY,
+        baseline: nextBaseLine,
+      });
     }
-  });
+  }
 };
 
 // https://github.com/grassator/canvas-text-editor/blob/master/lib/FontMetrics.js
@@ -175,7 +174,6 @@ export const measureText = (
   container.style.whiteSpace = "pre";
   container.style.font = font;
   container.style.minHeight = "1em";
-
   if (maxWidth) {
     const lineHeight = getApproxLineHeight(font);
     container.style.width = `${String(maxWidth)}px`;
@@ -205,8 +203,14 @@ export const measureText = (
 };
 
 const DUMMY_TEXT = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toLocaleUpperCase();
+const cacheApproxLineHeight: { [key: FontString]: number } = {};
+
 export const getApproxLineHeight = (font: FontString) => {
-  return measureText(DUMMY_TEXT, font, null).height;
+  if (cacheApproxLineHeight[font]) {
+    return cacheApproxLineHeight[font];
+  }
+  cacheApproxLineHeight[font] = measureText(DUMMY_TEXT, font, null).height;
+  return cacheApproxLineHeight[font];
 };
 
 let canvas: HTMLCanvasElement | undefined;
@@ -350,6 +354,7 @@ export const charWidth = (() => {
       const width = getTextWidth(char, font);
       cachedCharWidth[font][ascii] = width;
     }
+
     return cachedCharWidth[font][ascii];
   };
 
@@ -362,10 +367,14 @@ export const charWidth = (() => {
   };
 })();
 export const getApproxMinLineWidth = (font: FontString) => {
-  return (
-    measureText(DUMMY_TEXT.split("").join("\n"), font).width +
-    BOUND_TEXT_PADDING * 2
-  );
+  const maxCharWidth = getMaxCharWidth(font);
+  if (maxCharWidth === 0) {
+    return (
+      measureText(DUMMY_TEXT.split("").join("\n"), font).width +
+      BOUND_TEXT_PADDING * 2
+    );
+  }
+  return maxCharWidth + BOUND_TEXT_PADDING * 2;
 };
 
 export const getApproxMinLineHeight = (font: FontString) => {
@@ -380,6 +389,15 @@ export const getMinCharWidth = (font: FontString) => {
   const cacheWithOutEmpty = cache.filter((val) => val !== undefined);
 
   return Math.min(...cacheWithOutEmpty);
+};
+
+export const getMaxCharWidth = (font: FontString) => {
+  const cache = charWidth.getCache(font);
+  if (!cache) {
+    return 0;
+  }
+  const cacheWithOutEmpty = cache.filter((val) => val !== undefined);
+  return Math.max(...cacheWithOutEmpty);
 };
 
 export const getApproxCharsToFitInWidth = (font: FontString, width: number) => {
@@ -416,9 +434,25 @@ export const getBoundTextElement = (element: ExcalidrawElement | null) => {
   }
   const boundTextElementId = getBoundTextElementId(element);
   if (boundTextElementId) {
-    return Scene.getScene(element)!.getElement(
-      boundTextElementId,
-    ) as ExcalidrawTextElementWithContainer;
+    return (
+      (Scene.getScene(element)?.getElement(
+        boundTextElementId,
+      ) as ExcalidrawTextElementWithContainer) || null
+    );
+  }
+  return null;
+};
+
+export const getContainerElement = (
+  element:
+    | (ExcalidrawElement & { containerId: ExcalidrawElement["id"] | null })
+    | null,
+) => {
+  if (!element) {
+    return null;
+  }
+  if (element.containerId) {
+    return Scene.getScene(element)?.getElement(element.containerId) || null;
   }
   return null;
 };

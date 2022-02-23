@@ -105,6 +105,7 @@ const restoreElementWithProperties = <
       ? element.boundElementIds.map((id) => ({ type: "arrow", id }))
       : element.boundElements ?? [],
     updated: element.updated ?? getUpdatedTimestamp(),
+    link: element.link ?? null,
   };
 
   return {
@@ -136,7 +137,7 @@ const restoreElement = (
         textAlign: element.textAlign || DEFAULT_TEXT_ALIGN,
         verticalAlign: element.verticalAlign || DEFAULT_VERTICAL_ALIGN,
         containerId: element.containerId ?? null,
-        originalText: element.originalText ?? "",
+        originalText: element.originalText || element.text,
       });
     case "freedraw": {
       return restoreElementWithProperties(element, {
@@ -261,7 +262,6 @@ export const restoreAppState = (
       typeof appState.zoom === "number"
         ? {
             value: appState.zoom as NormalizedZoomValue,
-            translation: defaultAppState.zoom.translation,
           }
         : appState.zoom || defaultAppState.zoom,
   };

@@ -102,7 +102,15 @@
     "showBackground": "Zobraziť výber farby pre pozadie",
     "toggleTheme": "Prepnúť tému",
     "personalLib": "Moja knižnica",
-    "excalidrawLib": "Excalidraw knižnica"
+    "excalidrawLib": "Excalidraw knižnica",
+    "decreaseFontSize": "Zmenšiť veľkosť písma",
+    "increaseFontSize": "Zväčšiť veľkosť písma",
+    "unbindText": "Zrušiť previazanie textu",
+    "link": {
+      "edit": "Upraviť odkaz",
+      "create": "Vytvoriť odkaz",
+      "label": "Odkaz"
+    }
   },
   "buttons": {
     "clearReset": "Obnoviť plátno",
@@ -184,7 +192,9 @@
     "freedraw": "Kresliť",
     "text": "Text",
     "library": "Knižnica",
-    "lock": "Nechať zvolený nástroj aktívny po skončení kreslenia"
+    "lock": "Nechať zvolený nástroj aktívny po skončení kreslenia",
+    "penMode": "Zabrániť priblíženiu potiahnutím a povoliť vstup voľnou rokou iba z pera",
+    "link": "Pridať/ Upraviť odkaz pre vybraný tvar"
   },
   "headings": {
     "canvasActions": "Akcie plátna",
@@ -192,7 +202,7 @@
     "shapes": "Tvary"
   },
   "hints": {
-    "canvasPanning": "Pre pohyb plátna podržte koliesko myši ale medzerník počas ťahania",
+    "canvasPanning": "Pre pohyb plátna podržte koliesko myši alebo medzerník počas ťahania",
     "linearElement": "Kliknite na vloženie viacerých bodov, potiahnite na vytvorenie jednej priamky",
     "freeDraw": "Kliknite a ťahajte, pustite na ukončenie",
     "text": "Tip: text môžete pridať aj dvojklikom kdekoľvek, ak je zvolený nástroj výber",
@@ -204,10 +214,12 @@
     "resizeImage": "Podržte SHIFT pre voľnú zmenu veľkosti, podržte ALT pre zmenu veľkosti od stredu",
     "rotate": "Počas rotácie obmedzíte uhol podržaním SHIFT",
     "lineEditor_info": "Použite dvojklik alebo stlačte Enter na editáciu bodov",
-    "lineEditor_pointSelected": "Stačte Delete na vymazanie bodu, CtrlOrCmd+D na jeho duplikovanie, alebo potiahnite na jeho presunutie",
-    "lineEditor_nothingSelected": "Zvoľte bod na jeho presunutie alebo vymazanie, alebo podržte Alt a kliknite na pridanie nového bodu",
+    "lineEditor_pointSelected": "Stačte Delete na vymazanie bodu (bodov), CtrlOrCmd+D na duplikovanie, alebo potiahnite na presunutie",
+    "lineEditor_nothingSelected": "Zvoľte bod na upravovanie (podržte SHIFT pre zvolenie viacerých bodov) alebo podržte Alt a kliknite na pridanie nového bodu",
     "placeImage": "Kliknite pre umiestnenie obrázka alebo kliknite a ťahajte pre zmenu jeho veľkosti",
-    "publishLibrary": "Uverejniť vašu knižnicu"
+    "publishLibrary": "Uverejniť vašu knižnicu",
+    "bindTextToElement": "Stlačte enter na pridanie textu",
+    "deepBoxSelect": "Podržte CtrlOrCmd na výber v skupine alebo zamedzeniu poťiahnutia"
   },
   "canvasError": {
     "cannotShowPreview": "Nie je možné zobraziť náhľad plátna",
@@ -254,6 +266,8 @@
   "helpDialog": {
     "blog": "Prečítajte si náš blog",
     "click": "kliknutie",
+    "deepSelect": "Výber v skupine",
+    "deepBoxSelect": "Výber v skupine alebo zamedzenie poťiahnutia",
     "curvedArrow": "Zakrivená šípka",
     "curvedLine": "Zakrivená čiara",
     "documentation": "Dokumentácia",
@@ -289,7 +303,7 @@
     "placeholder": {
       "authorName": "Vaše meno alebo užívateľské meno",
       "libraryName": "Názov vašej knižnice",
-      "libraryDesc": "",
+      "libraryDesc": "Popis vašej knižnice, ktorý ostatným pomôže porozumieť jej vhodnému použitiu",
       "githubHandle": "GitHub užívateľské meno (nepovinné), aby ste mohli robiť úpravy po tom, čo bude knižnica uverejnená na schválenie",
       "twitterHandle": "Twitter užívateľské meno (nepovinné), aby sme vedeli komu pripísať zásluhu pri propagovaní cez Twitter",
       "website": "Odkaz na vašu osobnú webovú stránku alebo niekam inam (nepovinné)"

@@ -102,7 +102,15 @@
     "showBackground": "",
     "toggleTheme": "",
     "personalLib": "",
-    "excalidrawLib": ""
+    "excalidrawLib": "",
+    "decreaseFontSize": "",
+    "increaseFontSize": "",
+    "unbindText": "",
+    "link": {
+      "edit": "",
+      "create": "",
+      "label": ""
+    }
   },
   "buttons": {
     "clearReset": "",
@@ -184,7 +192,9 @@
     "freedraw": "",
     "text": "Мәтін",
     "library": "",
-    "lock": ""
+    "lock": "",
+    "penMode": "",
+    "link": ""
   },
   "headings": {
     "canvasActions": "",
@@ -207,7 +217,9 @@
     "lineEditor_pointSelected": "",
     "lineEditor_nothingSelected": "",
     "placeImage": "",
-    "publishLibrary": ""
+    "publishLibrary": "",
+    "bindTextToElement": "",
+    "deepBoxSelect": ""
   },
   "canvasError": {
     "cannotShowPreview": "",
@@ -254,6 +266,8 @@
   "helpDialog": {
     "blog": "Біздің блогты оқу",
     "click": "шерту",
+    "deepSelect": "",
+    "deepBoxSelect": "",
     "curvedArrow": "Майысқан нұсқар",
     "curvedLine": "Майысқан сызық",
     "documentation": "Құжаттама",

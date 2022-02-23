@@ -21,9 +21,8 @@ import { AppState } from "../types";
 import { getElementAbsoluteCoords } from ".";
 import { adjustXYWithRotation } from "../math";
 import { getResizedElementAbsoluteCoords } from "./bounds";
-import { measureText } from "./textElement";
+import { getContainerElement, measureText, wrapText } from "./textElement";
 import { isBoundToContainer } from "./typeChecks";
-import Scene from "../scene/Scene";
 import { BOUND_TEXT_PADDING } from "../constants";
 
 type ElementConstructorOpts = MarkOptional<
@@ -36,6 +35,7 @@ type ElementConstructorOpts = MarkOptional<
   | "seed"
   | "version"
   | "versionNonce"
+  | "link"
 >;
 
 const _newElementBase = <T extends ExcalidrawElement>(
@@ -56,6 +56,7 @@ const _newElementBase = <T extends ExcalidrawElement>(
     groupIds = [],
     strokeSharpness,
     boundElements = null,
+    link = null,
     ...rest
   }: ElementConstructorOpts & Omit<Partial<ExcalidrawGenericElement>, "type">,
 ) => {
@@ -82,6 +83,7 @@ const _newElementBase = <T extends ExcalidrawElement>(
     isDeleted: false as false,
     boundElements,
     updated: getUpdatedTimestamp(),
+    link,
   };
   return element;
 };
@@ -158,7 +160,11 @@ const getAdjustedDimensions = (
   height: number;
   baseline: number;
 } => {
-  const maxWidth = element.containerId ? element.width : null;
+  let maxWidth = null;
+  const container = getContainerElement(element);
+  if (container) {
+    maxWidth = container.width - BOUND_TEXT_PADDING * 2;
+  }
   const {
     width: nextWidth,
     height: nextHeight,
@@ -216,7 +222,7 @@ const getAdjustedDimensions = (
   // make sure container dimensions are set properly when
   // text editor overflows beyond viewport dimensions
   if (isBoundToContainer(element)) {
-    const container = Scene.getScene(element)!.getElement(element.containerId)!;
+    const container = getContainerElement(element)!;
     let height = container.height;
     let width = container.width;
     if (nextHeight > height - BOUND_TEXT_PADDING * 2) {
@@ -244,13 +250,17 @@ export const updateTextElement = (
     text,
     isDeleted,
     originalText,
-  }: { text: string; isDeleted?: boolean; originalText: string },
-
-  updateDimensions: boolean,
+  }: {
+    text: string;
+    isDeleted?: boolean;
+    originalText: string;
+  },
 ): ExcalidrawTextElement => {
-  const dimensions = updateDimensions
-    ? getAdjustedDimensions(element, text)
-    : undefined;
+  const container = getContainerElement(element);
+  if (container) {
+    text = wrapText(text, getFontString(element), container.width);
+  }
+  const dimensions = getAdjustedDimensions(element, text);
   return newElementWith(element, {
     text,
     originalText,

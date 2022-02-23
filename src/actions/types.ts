@@ -101,7 +101,11 @@ export type ActionName =
   | "flipVertical"
   | "viewMode"
   | "exportWithDarkMode"
-  | "toggleTheme";
+  | "toggleTheme"
+  | "increaseFontSize"
+  | "decreaseFontSize"
+  | "unbindText"
+  | "hyperlink";
 
 export type PanelComponentProps = {
   elements: readonly ExcalidrawElement[];
@@ -121,12 +125,20 @@ export interface Action {
     appState: AppState,
     elements: readonly ExcalidrawElement[],
   ) => boolean;
-  contextItemLabel?: string;
+  contextItemLabel?:
+    | string
+    | ((
+        elements: readonly ExcalidrawElement[],
+        appState: Readonly<AppState>,
+      ) => string);
   contextItemPredicate?: (
     elements: readonly ExcalidrawElement[],
     appState: AppState,
   ) => boolean;
   checked?: (appState: Readonly<AppState>) => boolean;
+  trackEvent?:
+    | boolean
+    | ((action: Action, type: "ui" | "keyboard" | "api", value: any) => void);
 }
 
 export interface ActionsManagerInterface {

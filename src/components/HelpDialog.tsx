@@ -205,6 +205,10 @@ export const HelpDialog = ({ onClose }: { onClose?: () => void }) => {
                   label={t("helpDialog.preventBinding")}
                   shortcuts={[getShortcutKey("CtrlOrCmd")]}
                 />
+                <Shortcut
+                  label={t("toolBar.link")}
+                  shortcuts={[getShortcutKey("CtrlOrCmd+K")]}
+                />
               </ShortcutIsland>
               <ShortcutIsland caption={t("helpDialog.view")}>
                 <Shortcut
@@ -393,6 +397,14 @@ export const HelpDialog = ({ onClose }: { onClose?: () => void }) => {
                 <Shortcut
                   label={t("labels.showBackground")}
                   shortcuts={[getShortcutKey("G")]}
+                />
+                <Shortcut
+                  label={t("labels.decreaseFontSize")}
+                  shortcuts={[getShortcutKey("CtrlOrCmd+Shift+<")]}
+                />
+                <Shortcut
+                  label={t("labels.increaseFontSize")}
+                  shortcuts={[getShortcutKey("CtrlOrCmd+Shift+>")]}
                 />
               </ShortcutIsland>
             </Column>

@@ -102,7 +102,15 @@
     "showBackground": "Mostrar lo selector de color de fons",
     "toggleTheme": "Alternar tèma",
     "personalLib": "Bibliotèca personala",
-    "excalidrawLib": "Bibliotèca Excalidraw"
+    "excalidrawLib": "Bibliotèca Excalidraw",
+    "decreaseFontSize": "Reduire talha poliça",
+    "increaseFontSize": "Aumentar talha poliça",
+    "unbindText": "",
+    "link": {
+      "edit": "",
+      "create": "",
+      "label": ""
+    }
   },
   "buttons": {
     "clearReset": "Reïnicializar lo canabàs",
@@ -184,7 +192,9 @@
     "freedraw": "Dessenhar",
     "text": "Tèxt",
     "library": "Bibliotèca",
-    "lock": "Mantenir activa l’aisina aprèp dessenhar"
+    "lock": "Mantenir activa l’aisina aprèp dessenhar",
+    "penMode": "",
+    "link": ""
   },
   "headings": {
     "canvasActions": "Accions del canabàs",
@@ -204,10 +214,12 @@
     "resizeImage": "Podètz retalhar liurament en quichant CTRL,\nquichatz ALT per retalhar a partir del centre",
     "rotate": "Podètz restrénger los angles en mantenent MAJ pendent la rotacion",
     "lineEditor_info": "Doble-clicatz o quichatz Entrada per modificar los punts",
-    "lineEditor_pointSelected": "Quichatz Suprimir per suprimir lo punt, Ctrl o Cmd+D per lo duplicar, o fasètz lisar per lo desplaçar",
-    "lineEditor_nothingSelected": "Seleccionatz un punt de desplaçar o suprimir, o mantenètz Alt e clicatz per apondre punts novèls",
+    "lineEditor_pointSelected": "Quichar Suprimir per tirar lo(s) punt(s),\nCtrlOCmd+D per duplicar, o lisatz per desplaçar",
+    "lineEditor_nothingSelected": "Seleccionar un punt d’editar (manténer Maj. per ne seleccionar mantun),\no manténer Alt e clicar per n’apondre de novèls",
     "placeImage": "Clicatz per plaçar l’imatge, o clicatz e lisatz per definir sa talha manualament",
-    "publishLibrary": "Publicar vòstra pròpria bibliotèca"
+    "publishLibrary": "Publicar vòstra pròpria bibliotèca",
+    "bindTextToElement": "",
+    "deepBoxSelect": ""
   },
   "canvasError": {
     "cannotShowPreview": "Afichatge impossible de l’apercebut",
@@ -254,6 +266,8 @@
   "helpDialog": {
     "blog": "Legir nòstre blog",
     "click": "clic",
+    "deepSelect": "",
+    "deepBoxSelect": "",
     "curvedArrow": "Sageta corba",
     "curvedLine": "Linha corba",
     "documentation": "Documentacion",
@@ -296,7 +310,7 @@
     },
     "errors": {
       "required": "Requerit",
-      "website": ""
+      "website": "Picatz una URL valida"
     },
     "noteDescription": {
       "pre": "Enviatz vòstra bibliotèca per èsser compresa al ",

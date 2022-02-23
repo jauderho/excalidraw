@@ -101,8 +101,16 @@
     "showStroke": "إظهار منتقي لون الخط",
     "showBackground": "إظهار منتقي لون الخلفية",
     "toggleTheme": "غير النمط",
-    "personalLib": "",
-    "excalidrawLib": ""
+    "personalLib": "المكتبة الشخصية",
+    "excalidrawLib": "مكتبتنا",
+    "decreaseFontSize": "تصغير حجم الخط",
+    "increaseFontSize": "تكبير حجم الخط",
+    "unbindText": "",
+    "link": {
+      "edit": "",
+      "create": "",
+      "label": ""
+    }
   },
   "buttons": {
     "clearReset": "إعادة تعيين اللوحة",
@@ -138,10 +146,10 @@
     "exitZenMode": "إلغاء الوضع الليلى",
     "cancel": "إلغاء",
     "clear": "مسح",
-    "remove": "",
-    "publishLibrary": "",
-    "submit": "",
-    "confirm": ""
+    "remove": "إزالة",
+    "publishLibrary": "انشر",
+    "submit": "أرسل",
+    "confirm": "تأكيد"
   },
   "alerts": {
     "clearReset": "هذا سيُزيل كامل اللوحة. هل أنت متأكد؟",
@@ -171,7 +179,7 @@
     "imageInsertError": "تعذر إدراج الصورة. حاول مرة أخرى لاحقاً...",
     "fileTooBig": "الملف كبير جداً. الحد الأقصى المسموح به للحجم هو {{maxSize}}.",
     "svgImageInsertError": "تعذر إدراج صورة SVG. يبدو أن ترميز SVG غير صحيح.",
-    "invalidSVGString": ""
+    "invalidSVGString": "SVG غير صالح."
   },
   "toolBar": {
     "selection": "تحديد",
@@ -184,7 +192,9 @@
     "freedraw": "رسم",
     "text": "نص",
     "library": "مكتبة",
-    "lock": "الحفاظ على أداة التحديد نشطة بعد الرسم"
+    "lock": "الحفاظ على أداة التحديد نشطة بعد الرسم",
+    "penMode": "",
+    "link": ""
   },
   "headings": {
     "canvasActions": "إجراءات اللوحة",
@@ -192,7 +202,7 @@
     "shapes": "الأشكال"
   },
   "hints": {
-    "canvasPanning": "",
+    "canvasPanning": "لتحريك لوحة الرسم ، استمر في الضغط على عجلة الماوس أو مفتاح المسافة أثناء السحب",
     "linearElement": "انقر لبدء نقاط متعددة، اسحب لخط واحد",
     "freeDraw": "انقر واسحب، افرج عند الانتهاء",
     "text": "نصيحة: يمكنك أيضًا إضافة نص بالنقر المزدوج في أي مكان بأداة الاختيار",
@@ -204,10 +214,12 @@
     "resizeImage": "يمكنك تغيير الحجم بحرية بالضغط بأستمرار على SHIFT،\nاضغط بأستمرار على ALT أيضا لتغيير الحجم من المركز",
     "rotate": "يمكنك تقييد الزوايا من خلال الضغط على SHIFT أثناء الدوران",
     "lineEditor_info": "انقر نقراً مزدوجاً أو اضغط Enter لتعديل النقاط",
-    "lineEditor_pointSelected": "اضغط على حذف لإزالة النقطة، Ctrl Or Cmd+D للتكرار، أو اسحب للانتقال",
-    "lineEditor_nothingSelected": "حدد نقطة لتحريك أو إزالتها، أو اضغط Alt ثم انقر لإضافة نقاط جديدة",
+    "lineEditor_pointSelected": "",
+    "lineEditor_nothingSelected": "",
     "placeImage": "",
-    "publishLibrary": ""
+    "publishLibrary": "",
+    "bindTextToElement": "",
+    "deepBoxSelect": ""
   },
   "canvasError": {
     "cannotShowPreview": "تعذر عرض المعاينة",
@@ -254,6 +266,8 @@
   "helpDialog": {
     "blog": "اقرأ مدونتنا",
     "click": "انقر",
+    "deepSelect": "",
+    "deepBoxSelect": "",
     "curvedArrow": "سهم مائل",
     "curvedLine": "خط مائل",
     "documentation": "دليل الاستخدام",
@@ -295,7 +309,7 @@
       "website": ""
     },
     "errors": {
-      "required": "",
+      "required": "مطلوب",
       "website": ""
     },
     "noteDescription": {
@@ -317,13 +331,13 @@
     "atleastOneLibItem": ""
   },
   "publishSuccessDialog": {
-    "title": "",
-    "content": "",
-    "link": ""
+    "title": "تم إرسال المكتبة",
+    "content": "شكرا لك {{authorName}}. لقد تم إرسال مكتبتك للمراجعة. يمكنك تتبع الحالة",
+    "link": "هنا"
   },
   "confirmDialog": {
-    "resetLibrary": "",
-    "removeItemsFromLib": ""
+    "resetLibrary": "إعادة ضبط المكتبة",
+    "removeItemsFromLib": "إزالة العناصر المحددة من المكتبة"
   },
   "encrypted": {
     "tooltip": "رسوماتك مشفرة من النهاية إلى النهاية حتى أن خوادم Excalidraw لن تراها أبدا.",
@@ -345,7 +359,7 @@
     "width": "العرض"
   },
   "toast": {
-    "addedToLibrary": "",
+    "addedToLibrary": "تمت الاضافة الى المكتبة!",
     "copyStyles": "نسخت الانماط.",
     "copyToClipboard": "نسخ إلى الحافظة.",
     "copyToClipboardAsPng": "تم نسخ {{exportSelection}} إلى الحافظة بصيغة PNG\n({{exportColorScheme}})",
