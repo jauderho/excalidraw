@@ -41,6 +41,7 @@ export type ActionName =
   | "paste"
   | "copyAsPng"
   | "copyAsSvg"
+  | "copyText"
   | "sendBackward"
   | "bringForward"
   | "sendToBack"
