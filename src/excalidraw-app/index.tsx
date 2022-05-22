@@ -6,9 +6,9 @@ import { ErrorDialog } from "../components/ErrorDialog";
 import { TopErrorBoundary } from "../components/TopErrorBoundary";
 import {
   APP_NAME,
+  COOKIES,
   EVENT,
   TITLE_TIMEOUT,
-  URL_HASH_KEYS,
   VERSION_TIMEOUT,
 } from "../constants";
 import { loadFromBlob } from "../data/blob";
@@ -72,6 +72,11 @@ import { loadFilesFromFirebase } from "./data/firebase";
 import { LocalData } from "./data/LocalData";
 import { isBrowserStorageStateNewer } from "./data/tabSync";
 import clsx from "clsx";
+import { parseLibraryTokensFromUrl, useHandleLibrary } from "../data/library";
+
+const isExcalidrawPlusSignedUser = document.cookie.includes(
+  COOKIES.AUTH_STATE_COOKIE,
+);
 
 const languageDetector = new LanguageDetector();
 languageDetector.init({
@@ -187,7 +192,7 @@ const initializeScene = async (opts: {
   return { scene: null, isExternalScene: false };
 };
 
-const PlusLinkJSX = (
+const PlusLPLinkJSX = (
   <p style={{ direction: "ltr", unicodeBidi: "embed" }}>
     Introducing Excalidraw+
     <br />
@@ -199,6 +204,17 @@ const PlusLinkJSX = (
       Try out now!
     </a>
   </p>
+);
+
+const PlusAppLinkJSX = (
+  <a
+    href={`${process.env.REACT_APP_PLUS_APP}/#excalidraw-redirect`}
+    target="_blank"
+    rel="noreferrer"
+    className="plus-button"
+  >
+    Go to Excalidraw+
+  </a>
 );
 
 const ExcalidrawWrapper = () => {
@@ -231,6 +247,11 @@ const ExcalidrawWrapper = () => {
     useCallbackRefState<ExcalidrawImperativeAPI>();
 
   const collabAPI = useContext(CollabContext)?.api;
+
+  useHandleLibrary({
+    excalidrawAPI,
+    getInitialLibraryItems: getLibraryItemsFromStorage,
+  });
 
   useEffect(() => {
     if (!collabAPI || !excalidrawAPI) {
@@ -301,8 +322,6 @@ const ExcalidrawWrapper = () => {
           LocalData.fileStorage.clearObsoleteFiles({ currentFileIds: fileIds });
         }
       }
-
-      data.scene.libraryItems = getLibraryItemsFromStorage();
     };
 
     initializeScene({ collabAPI }).then((data) => {
@@ -310,18 +329,10 @@ const ExcalidrawWrapper = () => {
       initialStatePromiseRef.current.promise.resolve(data.scene);
     });
 
-    const onHashChange = (event: HashChangeEvent) => {
+    const onHashChange = async (event: HashChangeEvent) => {
       event.preventDefault();
-      const hash = new URLSearchParams(window.location.hash.slice(1));
-      const libraryUrl = hash.get(URL_HASH_KEYS.addLibrary);
-      if (libraryUrl) {
-        // If hash changed and it contains library url, import it and replace
-        // the url to its previous state (important in case of collaboration
-        // and similar).
-        // Using history API won't trigger another hashchange.
-        window.history.replaceState({}, "", event.oldURL);
-        excalidrawAPI.importLibrary(libraryUrl, hash.get("token"));
-      } else {
+      const libraryUrlTokens = parseLibraryTokensFromUrl();
+      if (!libraryUrlTokens) {
         initializeScene({ collabAPI }).then((data) => {
           loadImages(data);
           if (data.scene) {
@@ -355,6 +366,8 @@ const ExcalidrawWrapper = () => {
           setLangCode(langCode);
           excalidrawAPI.updateScene({
             ...localDataState,
+          });
+          excalidrawAPI.updateLibrary({
             libraryItems: getLibraryItemsFromStorage(),
           });
           collabAPI.setUsername(username || "");
@@ -532,17 +545,16 @@ const ExcalidrawWrapper = () => {
       if (isMobile) {
         return null;
       }
+
       return (
         <div
           style={{
-            width: "24ch",
+            width: isExcalidrawPlusSignedUser ? "21ch" : "23ch",
             fontSize: "0.7em",
             textAlign: "center",
           }}
         >
-          {/* <GitHubCorner theme={appState.theme} dir={document.dir} /> */}
-          {/* FIXME remove after 2021-05-20 */}
-          {PlusLinkJSX}
+          {isExcalidrawPlusSignedUser ? PlusAppLinkJSX : PlusLPLinkJSX}
         </div>
       );
     },
@@ -594,12 +606,14 @@ const ExcalidrawWrapper = () => {
                 marginTop: isTinyDevice ? 16 : undefined,
                 marginLeft: "auto",
                 marginRight: isTinyDevice ? "auto" : undefined,
-                padding: "4px 2px",
-                border: "1px dashed #aaa",
+                padding: isExcalidrawPlusSignedUser ? undefined : "4px 2px",
+                border: isExcalidrawPlusSignedUser
+                  ? undefined
+                  : "1px dashed #aaa",
                 borderRadius: 12,
               }}
             >
-              {PlusLinkJSX}
+              {isExcalidrawPlusSignedUser ? PlusAppLinkJSX : PlusLPLinkJSX}
             </div>
           </div>
         );
