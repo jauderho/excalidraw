@@ -10,7 +10,7 @@ import {
   withBatchedUpdates,
   withBatchedUpdatesThrottled,
 } from "../../../utils";
-import { DRAGGING_THRESHOLD, EVENT } from "../../../constants";
+import { EVENT } from "../../../constants";
 import { distance2d } from "../../../math";
 import { fileOpen } from "../../../data/filesystem";
 import { loadSceneOrLibraryFromBlob } from "../../utils";
@@ -265,25 +265,20 @@ export default function App() {
   const onPointerMoveFromPointerDownHandler = (pointerDownState) => {
     return withBatchedUpdatesThrottled((event) => {
       const { x, y } = viewportCoordsToSceneCoords(
-        { clientX: event.clientX, clientY: event.clientY },
+        {
+          clientX: event.clientX - pointerDownState.hitElementOffsets.x,
+          clientY: event.clientY - pointerDownState.hitElementOffsets.y,
+        },
         excalidrawAPI.getAppState(),
       );
-      const distance = distance2d(
-        pointerDownState.x,
-        pointerDownState.y,
-        event.clientX,
-        event.clientY,
-      );
-      if (distance > DRAGGING_THRESHOLD) {
-        setCommentIcons({
-          ...commentIcons,
-          [pointerDownState.hitElement.id]: {
-            ...commentIcons[pointerDownState.hitElement.id],
-            x,
-            y,
-          },
-        });
-      }
+      setCommentIcons({
+        ...commentIcons,
+        [pointerDownState.hitElement.id]: {
+          ...commentIcons[pointerDownState.hitElement.id],
+          x,
+          y,
+        },
+      });
     });
   };
   const onPointerUpFromPointerDownHandler = (pointerDownState) => {
@@ -329,6 +324,8 @@ export default function App() {
             zIndex: 1,
             width: `${COMMENT_ICON_DIMENSION}px`,
             height: `${COMMENT_ICON_DIMENSION}px`,
+            cursor: "pointer",
+            touchAction: "none",
           }}
           className="comment-icon"
           onPointerDown={(event) => {
@@ -341,6 +338,7 @@ export default function App() {
               x: event.clientX,
               y: event.clientY,
               hitElement: commentIcon,
+              hitElementOffsets: { x: event.clientX - x, y: event.clientY - y },
             };
             const onPointerMove =
               onPointerMoveFromPointerDownHandler(pointerDownState);
