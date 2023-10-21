@@ -8,7 +8,7 @@ import {
   mockBoundingClientRect,
   restoreOriginalGetBoundingClientRect,
 } from "../tests/test-utils";
-import { queryByText, waitFor } from "@testing-library/react";
+import { queryByText } from "@testing-library/react";
 
 import { FONT_FAMILY, TEXT_ALIGN, VERTICAL_ALIGN } from "../constants";
 import {
@@ -18,24 +18,13 @@ import {
 import { API } from "../tests/helpers/api";
 import { mutateElement } from "./mutateElement";
 import { getOriginalContainerHeightFromCache } from "./textWysiwyg";
+import { getTextEditor } from "../tests/queries/dom";
 
 // Unmount ReactDOM from root
 ReactDOM.unmountComponentAtNode(document.getElementById("root")!);
 
 const tab = "    ";
 const mouse = new Pointer("mouse");
-
-const getTextEditor = async (waitForEditor = false) => {
-  const query = () =>
-    document.querySelector(
-      ".excalidraw-textEditorContainer > textarea",
-    ) as HTMLTextAreaElement;
-  if (waitForEditor) {
-    waitFor(() => expect(query()).not.toBe(null));
-    return query();
-  }
-  return query();
-};
 
 const updateTextEditor = (editor: HTMLTextAreaElement, value: string) => {
   fireEvent.change(editor, { target: { value } });
@@ -206,7 +195,7 @@ describe("textWysiwyg", () => {
 
       mouse.clickAt(text.x + 50, text.y + 50);
 
-      const editor = await getTextEditor();
+      const editor = await getTextEditor(false);
 
       expect(editor).not.toBe(null);
       expect(h.state.editingElement?.id).toBe(text.id);
@@ -228,7 +217,7 @@ describe("textWysiwyg", () => {
 
       mouse.doubleClickAt(text.x + 50, text.y + 50);
 
-      const editor = await getTextEditor();
+      const editor = await getTextEditor(false);
 
       expect(editor).not.toBe(null);
       expect(h.state.editingElement?.id).toBe(text.id);
@@ -1436,7 +1425,7 @@ describe("textWysiwyg", () => {
               type: "text",
             },
           ],
-          fillStyle: "hachure",
+          fillStyle: "solid",
           groupIds: [],
           height: 35,
           isDeleted: false,
@@ -1449,7 +1438,7 @@ describe("textWysiwyg", () => {
           },
           strokeColor: "#1e1e1e",
           strokeStyle: "solid",
-          strokeWidth: 1,
+          strokeWidth: 2,
           type: "rectangle",
           updated: 1,
           version: 1,
