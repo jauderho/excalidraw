@@ -794,25 +794,26 @@ class Collab extends PureComponent<Props, CollabState> {
     const collaborators: InstanceType<typeof Collab>["collaborators"] =
       new Map();
     for (const socketId of sockets) {
-      if (this.collaborators.has(socketId)) {
-        collaborators.set(socketId, this.collaborators.get(socketId)!);
-      } else {
-        collaborators.set(socketId, {});
-      }
+      collaborators.set(
+        socketId,
+        Object.assign({}, this.collaborators.get(socketId), {
+          isCurrentUser: socketId === this.portal.socket?.id,
+        }),
+      );
     }
     this.collaborators = collaborators;
     this.excalidrawAPI.updateScene({ collaborators });
   }
 
-  private updateCollaborator = (
-    socketId: SocketId,
-    updates: Partial<Collaborator>,
-  ) => {
+  updateCollaborator = (socketId: SocketId, updates: Partial<Collaborator>) => {
     const collaborators = new Map(this.collaborators);
     const user: Mutable<Collaborator> = Object.assign(
       {},
       collaborators.get(socketId),
       updates,
+      {
+        isCurrentUser: socketId === this.portal.socket?.id,
+      },
     );
     collaborators.set(socketId, user);
     this.collaborators = collaborators;
@@ -866,7 +867,7 @@ class Collab extends PureComponent<Props, CollabState> {
 
       this.portal.broadcastUserViewportBounds(
         { bounds: [x1, y1, x2, y2] },
-        `follow_${this.portal.socket.id}`,
+        `follow@${this.portal.socket.id}`,
       );
     }
   };
