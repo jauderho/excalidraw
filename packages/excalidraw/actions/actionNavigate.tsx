@@ -12,6 +12,7 @@ export const actionGoToCollaborator = register({
   trackEvent: { category: "collab" },
   perform: (_elements, appState, collaborator: Collaborator) => {
     if (
+      !collaborator.socketId ||
       appState.userToFollow?.socketId === collaborator.socketId ||
       collaborator.isCurrentUser
     ) {
@@ -28,7 +29,7 @@ export const actionGoToCollaborator = register({
       appState: {
         ...appState,
         userToFollow: {
-          socketId: collaborator.socketId!,
+          socketId: collaborator.socketId,
           username: collaborator.username || "",
         },
         // Close mobile menu
@@ -38,15 +39,15 @@ export const actionGoToCollaborator = register({
     };
   },
   PanelComponent: ({ updateData, data, appState }) => {
-    const [socketId, collaborator, withName, isBeingFollowed] =
+    const { clientId, collaborator, withName, isBeingFollowed } =
       data as GoToCollaboratorComponentProps;
 
-    const background = getClientColor(socketId);
+    const background = getClientColor(clientId);
 
     return withName ? (
       <div
         className="dropdown-menu-item dropdown-menu-item-base UserList__collaborator"
-        onClick={() => updateData({ ...collaborator, socketId })}
+        onClick={() => updateData<Collaborator>(collaborator)}
       >
         <Avatar
           color={background}
@@ -70,7 +71,7 @@ export const actionGoToCollaborator = register({
       <Avatar
         color={background}
         onClick={() => {
-          updateData({ ...collaborator, socketId });
+          updateData(collaborator);
         }}
         name={collaborator.username || ""}
         src={collaborator.avatarUrl}
