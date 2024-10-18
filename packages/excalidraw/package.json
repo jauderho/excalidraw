@@ -98,7 +98,7 @@
     "@babel/preset-typescript": "7.24.1",
     "@size-limit/preset-big-lib": "9.0.0",
     "@testing-library/dom": "10.4.0",
-    "@testing-library/jest-dom": "5.16.2",
+    "@testing-library/jest-dom": "6.6.2",
     "@testing-library/react": "16.0.0",
     "@types/pako": "1.0.3",
     "@types/pica": "5.1.3",
