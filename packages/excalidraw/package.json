@@ -108,7 +108,7 @@
     "babel-plugin-transform-class-properties": "6.24.1",
     "cross-env": "7.0.3",
     "css-loader": "6.7.1",
-    "dotenv": "16.0.1",
+    "dotenv": "16.4.5",
     "esbuild": "0.19.10",
     "esbuild-plugin-external-global": "1.0.1",
     "esbuild-sass-plugin": "2.16.0",
