@@ -96,7 +96,7 @@
     "@babel/preset-env": "7.24.5",
     "@babel/preset-react": "7.24.1",
     "@babel/preset-typescript": "7.24.1",
-    "@size-limit/preset-big-lib": "9.0.0",
+    "@size-limit/preset-big-lib": "11.1.6",
     "@testing-library/dom": "10.4.0",
     "@testing-library/jest-dom": "5.16.2",
     "@testing-library/react": "16.0.0",
