@@ -94,7 +94,7 @@
     "@babel/plugin-transform-runtime": "7.24.3",
     "@babel/plugin-transform-typescript": "7.24.5",
     "@babel/preset-env": "7.24.5",
-    "@babel/preset-react": "7.24.1",
+    "@babel/preset-react": "7.25.7",
     "@babel/preset-typescript": "7.24.1",
     "@size-limit/preset-big-lib": "9.0.0",
     "@testing-library/dom": "10.4.0",
