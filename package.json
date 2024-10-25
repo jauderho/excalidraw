@@ -31,7 +31,7 @@
     "http-server": "14.1.1",
     "husky": "7.0.4",
     "jsdom": "22.1.0",
-    "lint-staged": "12.3.7",
+    "lint-staged": "15.2.10",
     "pepjs": "0.5.3",
     "prettier": "2.6.2",
     "rewire": "6.0.0",
