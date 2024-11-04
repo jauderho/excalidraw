@@ -119,7 +119,7 @@
     "import-meta-loader": "1.1.0",
     "mini-css-extract-plugin": "2.6.1",
     "postcss-loader": "7.0.1",
-    "sass-loader": "13.0.2",
+    "sass-loader": "16.0.3",
     "size-limit": "9.0.0",
     "style-loader": "3.3.3",
     "ts-loader": "9.3.1",
