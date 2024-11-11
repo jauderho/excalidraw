@@ -6652,10 +6652,10 @@ hachure-fill@^0.5.2:
   resolved "https://registry.yarnpkg.com/hachure-fill/-/hachure-fill-0.5.2.tgz#d19bc4cc8750a5962b47fb1300557a85fcf934cc"
   integrity sha512-3GKBOn+m2LX9iq+JC1064cSFprJY4jL1jCXTcpnfER5HYE2l/4EfWSGzkPa/ZDBmYI0ZOEj5VHV/eKnPGkHuOg==
 
-harfbuzzjs@0.3.6:
-  version "0.3.6"
-  resolved "https://registry.yarnpkg.com/harfbuzzjs/-/harfbuzzjs-0.3.6.tgz#97865c861aa7734af5bd1904570712e9d753fda9"
-  integrity sha512-dzf7y6NS8fiAIvPAL/VKwY8wx2HCzUB0vUfOo6h1J5UilFEEf7iYqFsvgwjHwvM3whbjfOMadNvQekU3KuRnWQ==
+harfbuzzjs@0.4.3:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/harfbuzzjs/-/harfbuzzjs-0.4.3.tgz#e56259888789ae22b5fd36005a3274b55a1d2126"
+  integrity sha512-g7yRM1C7/le3PN9GPNufA3T1PEugOVOrG1WbDZKR0Olx0rft+1VKr0dx9nDcdBOT9vDXtXCH2/5fjc16OvRg5Q==
 
 has-ansi@^2.0.0:
   version "2.0.0"
