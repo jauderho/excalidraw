@@ -6362,13 +6362,6 @@ follow-redirects@^1.0.0:
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.6.tgz#7f815c0cda4249c74ff09e95ef97c23b5fd0399b"
   integrity sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==
 
-fonteditor-core@2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/fonteditor-core/-/fonteditor-core-2.4.0.tgz#f5955c7d3c6e383107cbdc72802efabad327f140"
-  integrity sha512-c8o4EKdcTJXNtYeoiJ7Y6pNDM5fTpeAneEz4lV4E8YrTe7liqrOyNeLI8SPxY0RR0S0nSpHcop1Wyoz4AlYTuQ==
-  dependencies:
-    "@xmldom/xmldom" "^0.8.3"
-
 fonteditor-core@2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/fonteditor-core/-/fonteditor-core-2.4.1.tgz#ff4b3cd04b50f98026bedad353d0ef6692464bc9"
