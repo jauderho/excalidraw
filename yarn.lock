@@ -6625,10 +6625,10 @@ jest-worker@^27.4.5:
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
 
-jotai-scope@0.7.2:
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/jotai-scope/-/jotai-scope-0.7.2.tgz#3e9ec5b743bd9f36b08b32cf5151786049bfcce7"
-  integrity sha512-Gwed97f3dDObrO43++2lRcgOqw4O2sdr4JCjP/7eHK1oPACDJ7xKHGScpJX9XaflU+KBHXF+VhwECnzcaQiShg==
+jotai-scope@0.9.7:
+  version "0.9.7"
+  resolved "https://registry.yarnpkg.com/jotai-scope/-/jotai-scope-0.9.7.tgz#a56c68dd072a91f4514037f04467f672b8a38679"
+  integrity sha512-L4s56xZiYZ0Ee0kmr6Ih1CZFi1c5VkIxUZR+Bxa3v31BfLl4ugvkPPniKKJAGcVB8SLQuEgtbcKk77vpohabbA==
 
 jotai@2.11.0:
   version "2.11.0"
